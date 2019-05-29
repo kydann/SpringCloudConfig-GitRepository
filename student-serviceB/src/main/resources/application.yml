@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: student-serviceB
+  boot:
+    admin:
+        client:
+            url: http://localhost:8888
+            #username: admin
+            #password: admin
+            #instance:
+                #metadata:
+                      #user:
+                          #name: user
+                          #password: user
+          
+management:
+  endpoint:
+         health:
+            enabled: true
+         shutdown:
+            enabled: true
+  endpoints:
+    web:
+      base-path: /actuator
+      exposure:
+        include: '*'
+  health:
+    defaults:
+      enabled: true
+          
+eureka:
+  client:
+    service-url:
+      defaultZone: http://admin:password@localhost:8761/eureka/
+      healthcheck:
+        enabled : true
+    register-with-eureka: false
+    fetch-registry: false
+
+logging:
+    level:
+        com:
+            netflix:
+                eureka: OFF
+                discovery: OFF
+
+server:
+  port: 8084
